@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://b48pv3j4hwsml"]
+
+[ext_resource type="Script" uid="uid://b2qe0tgll3tab" path="res://scene/TechTree.cs" id="1_3xh67"]
+[ext_resource type="PackedScene" uid="uid://bulr1y5xcd103" path="res://scene/tekshe.tscn" id="2_2715v"]
+
+[node name="TechTree" type="Control" unique_id=939728463 node_paths=PackedStringArray("bas", "hSlider")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3xh67")
+bas = NodePath("Tekshe")
+ratio = 75.0
+hSlider = NodePath("HSlider")
+
+[node name="Tekshe" parent="." unique_id=924204491 instance=ExtResource("2_2715v")]
+layout_mode = 0
+offset_left = 500.0
+offset_right = 681.0
+
+[node name="Tekshe2" parent="Tekshe" unique_id=1511798574 instance=ExtResource("2_2715v")]
+layout_mode = 0
+
+[node name="Tekshe4" parent="Tekshe/Tekshe2" unique_id=50618517 instance=ExtResource("2_2715v")]
+layout_mode = 0
+
+[node name="Tekshe5" parent="Tekshe/Tekshe2" unique_id=1096941575 instance=ExtResource("2_2715v")]
+layout_mode = 0
+
+[node name="Tekshe6" parent="Tekshe/Tekshe2/Tekshe5" unique_id=2110263802 instance=ExtResource("2_2715v")]
+layout_mode = 0
+
+[node name="Tekshe7" parent="Tekshe/Tekshe2/Tekshe5" unique_id=1489974101 instance=ExtResource("2_2715v")]
+layout_mode = 0
+
+[node name="Tekshe6" parent="Tekshe/Tekshe2/Tekshe5/Tekshe7" unique_id=1547181202 instance=ExtResource("2_2715v")]
+layout_mode = 0
+
+[node name="Tekshe3" parent="Tekshe" unique_id=269608714 instance=ExtResource("2_2715v")]
+layout_mode = 0
+
+[node name="Tekshe6" parent="Tekshe/Tekshe3" unique_id=480349469 instance=ExtResource("2_2715v")]
+layout_mode = 0
+
+[node name="Tekshe8" parent="Tekshe/Tekshe3" unique_id=95376416 instance=ExtResource("2_2715v")]
+layout_mode = 0
+
+[node name="Tekshe7" parent="Tekshe/Tekshe3" unique_id=2038087814 instance=ExtResource("2_2715v")]
+layout_mode = 0
+
+[node name="Tekshe4" parent="Tekshe" unique_id=719256839 instance=ExtResource("2_2715v")]
+layout_mode = 0
+
+[node name="Tekshe6" parent="Tekshe/Tekshe4" unique_id=1689431372 instance=ExtResource("2_2715v")]
+layout_mode = 0
+
+[node name="Tekshe8" parent="Tekshe/Tekshe4" unique_id=2125726864 instance=ExtResource("2_2715v")]
+layout_mode = 0
+
+[node name="Tekshe5" parent="Tekshe/Tekshe4/Tekshe8" unique_id=1050435267 instance=ExtResource("2_2715v")]
+layout_mode = 0
+
+[node name="Tekshe6" parent="Tekshe/Tekshe4/Tekshe8/Tekshe5" unique_id=1477526004 instance=ExtResource("2_2715v")]
+layout_mode = 0
+
+[node name="Tekshe8" parent="Tekshe/Tekshe4/Tekshe8/Tekshe5" unique_id=748773742 instance=ExtResource("2_2715v")]
+layout_mode = 0
+
+[node name="Tekshe7" parent="Tekshe/Tekshe4/Tekshe8/Tekshe5" unique_id=2094865520 instance=ExtResource("2_2715v")]
+layout_mode = 0
+
+[node name="Tekshe7" parent="Tekshe/Tekshe4" unique_id=294332699 instance=ExtResource("2_2715v")]
+layout_mode = 0
+
+[node name="HSlider" type="HSlider" parent="." unique_id=1574329304]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+offset_right = 250.0
+grow_vertical = 0
+max_value = 120.0

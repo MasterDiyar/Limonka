@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dt3c1aesl5ugo"]
+
+[ext_resource type="Script" uid="uid://cr2f1qu3t1y5m" path="res://scene/Thrower.cs" id="1_xbq82"]
+
+[node name="thrower" type="Node2D" unique_id=1420964573]
+script = ExtResource("1_xbq82")

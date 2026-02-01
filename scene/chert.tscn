@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://2s8vgd5k8kqq"]
+
+[ext_resource type="Script" uid="uid://32mt2uw2q71l" path="res://scene/Mob.cs" id="1_7muua"]
+[ext_resource type="Script" uid="uid://d06cxgxoyh73s" path="res://scene/MobResource.cs" id="2_cncem"]
+[ext_resource type="Texture2D" uid="uid://cb5ia2pm1wuw5" path="res://icon.svg" id="3_vjrms"]
+
+[sub_resource type="Resource" id="Resource_mnp1w"]
+script = ExtResource("2_cncem")
+MaxHp = 18.0
+MaxSpeed = 5.0
+MaxDamage = 10.0
+metadata/_custom_type_script = "uid://d06cxgxoyh73s"
+
+[sub_resource type="Resource" id="Resource_x4nuu"]
+script = ExtResource("2_cncem")
+metadata/_custom_type_script = "uid://d06cxgxoyh73s"
+
+[node name="Chert" type="CharacterBody2D" unique_id=1164202513]
+script = ExtResource("1_7muua")
+StatInfo = SubResource("Resource_mnp1w")
+Upgradeable = SubResource("Resource_x4nuu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1204796080]
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1010932738]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_vjrms")

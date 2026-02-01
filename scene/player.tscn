@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://02y2lmlrn0hp"]
+
+[ext_resource type="Script" uid="uid://bu0g62nex4pfr" path="res://scene/Player.cs" id="1_xo3ru"]
+[ext_resource type="Script" uid="uid://d06cxgxoyh73s" path="res://scene/MobResource.cs" id="2_ct4mp"]
+[ext_resource type="Texture2D" uid="uid://cb5ia2pm1wuw5" path="res://icon.svg" id="3_fvtld"]
+
+[sub_resource type="Resource" id="Resource_s4jxa"]
+script = ExtResource("2_ct4mp")
+MaxHp = 20.0
+MaxDamage = 5.0
+metadata/_custom_type_script = "uid://d06cxgxoyh73s"
+
+[sub_resource type="Resource" id="Resource_oh5ij"]
+script = ExtResource("2_ct4mp")
+metadata/_custom_type_script = "uid://d06cxgxoyh73s"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hjaqi"]
+size = Vector2(128, 128)
+
+[node name="Player" type="CharacterBody2D" unique_id=79704818 node_paths=PackedStringArray("oreInfo", "buyButtons")]
+script = ExtResource("1_xo3ru")
+MaxShield = 10.0
+oreInfo = NodePath("CanvasLayer/oreInfo")
+buyButtons = [NodePath("CanvasLayer/HBoxContainer/Button"), NodePath("CanvasLayer/HBoxContainer/Button2"), NodePath("CanvasLayer/HBoxContainer/Button3"), NodePath("CanvasLayer/HBoxContainer/Button4"), NodePath("CanvasLayer/HBoxContainer/Button5")]
+StatInfo = SubResource("Resource_s4jxa")
+Upgradeable = SubResource("Resource_oh5ij")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1534480611]
+shape = SubResource("RectangleShape2D_hjaqi")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1000091130]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=1879750695]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 56.0
+grow_vertical = 0
+
+[node name="Button" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=1166894737]
+layout_mode = 2
+text = "new turret"
+
+[node name="Button2" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=1348754722]
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=611702369]
+layout_mode = 2
+
+[node name="Button4" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=1886110112]
+layout_mode = 2
+
+[node name="Button5" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=904638382]
+layout_mode = 2
+
+[node name="oreInfo" type="Label" parent="CanvasLayer" unique_id=1239792491]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=828816328]
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1009010727]
+texture = ExtResource("3_fvtld")

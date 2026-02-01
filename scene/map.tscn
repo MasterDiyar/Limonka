@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dcj36n4pdvs4c"]
+
+[ext_resource type="Script" uid="uid://c6iecwt8vlwoe" path="res://scene/Map.cs" id="1_rgtto"]
+[ext_resource type="Script" uid="uid://cpb67c83v5jta" path="res://scene/WorldMapRes.cs" id="2_h0nt1"]
+[ext_resource type="PackedScene" uid="uid://02y2lmlrn0hp" path="res://scene/player.tscn" id="2_wpp1k"]
+
+[sub_resource type="Resource" id="Resource_nf54y"]
+script = ExtResource("2_h0nt1")
+Iron = 200.0
+Energy = 100.0
+Food = 400.0
+Wood = 100.0
+Silver = 100.0
+metadata/_custom_type_script = "uid://cpb67c83v5jta"
+
+[node name="Map" type="Node2D" unique_id=1012691624]
+script = ExtResource("1_rgtto")
+res = SubResource("Resource_nf54y")
+
+[node name="Player" parent="." unique_id=79704818 instance=ExtResource("2_wpp1k")]
