@@ -1,0 +1,119 @@
+using Godot;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+public partial class Dungeon : Node2D
+{
+    [Export] private int Count = 5;
+    private Camera2D cam;
+    private int[,] rooms = new int[32, 32];
+    private RandomNumberGenerator rng = new RandomNumberGenerator();
+    
+    static Vector2I vec(int i, int j) => new Vector2I(i, j);
+    
+    public override void _Ready()
+    {
+        cam = GetNode<Camera2D>("Camera2D");
+        DungeonInit();
+        
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        if (@event is InputEventMouseButton eventMouseMotion)
+        {
+            if (eventMouseMotion.Pressed)
+                cam.Position = GetGlobalMousePosition();
+        }
+    }
+
+    void DungeonInit()
+    {
+        Vector2I startPos = vec(16, 16);
+        int firstDir = (new int[] { 1, 2, 4, 8 })[rng.RandiRange(0, 3)];
+        
+        rooms[startPos.X, startPos.Y] = firstDir;
+        
+        CreateNumeredDungeon(startPos + GetDirV(firstDir), GetOpposite(firstDir), Count);
+        
+
+        StringBuilder sb = new StringBuilder("\n--- Dungeon Map ---\n");
+        for (int j = 0; j < 32; j++) {
+            for (int i = 0; i < 32; i++) {
+                int val = rooms[i, j];
+                string cell = val == 0 ? " . " : val.ToString().PadLeft(2) + " ";
+                sb.Append(cell);
+            }
+            sb.AppendLine();
+        }
+        GD.Print(sb.ToString());
+        QueueRedraw();
+    }
+    
+    public override void _Draw()
+    {
+        float cellSize = 10f; 
+        for (int i = 0; i < 32; i++)
+            for (int j = 0; j < 32; j++)
+                if (rooms[i, j] > 0)
+                    DrawRect(new Rect2(i * cellSize, j * cellSize, cellSize, cellSize), Colors.Green);
+    }
+
+    void CreateNumeredDungeon(Vector2I current, int from, int left)
+    {
+        if (current.X < 0 || current.X >= 32 || current.Y < 0 || current.Y >= 32) return;
+        if (rooms[current.X, current.Y] != 0) return;
+        
+        int currentMask = from;
+        
+        if (left <= 0) {
+            rooms[current.X, current.Y] = currentMask;
+            return;
+        }
+
+        var available = new List<int> { 1, 2, 4, 8 };
+        available.Remove(from);
+
+        available = available.Where(d => {
+            Vector2I next = current + GetDirV(d);
+            return next.X is >= 0 and < 32 && next.Y is >= 0 and < 32 && rooms[next.X, next.Y] == 0;
+        }).ToList();
+
+        if (available.Count == 0)
+        {
+            rooms[current.X, current.Y] = currentMask;
+            return;
+        }
+
+        int branchCount = rng.RandiRange(1, Math.Min(available.Count, left));
+        List<int> chosenDirs = new List<int>();
+
+        for (int i = 0; i < branchCount; i++)
+        {
+            int idx = rng.RandiRange(0, available.Count - 1);
+            int dir = available[idx];
+            chosenDirs.Add(dir);
+            currentMask += dir; 
+            available.RemoveAt(idx);
+        }
+
+        rooms[current.X, current.Y] = currentMask;
+
+        int leftPerBranch = left - branchCount;
+        foreach (int dir in chosenDirs)
+        {
+            int roomsForThisBranch = branchCount > 1 ? leftPerBranch / branchCount : leftPerBranch;
+            CreateNumeredDungeon(current + GetDirV(dir), GetOpposite(dir), roomsForThisBranch);
+        }
+    }
+    
+    int GetOpposite(int dir) => dir switch
+        { 1 => 4, 2 => 8, 4 => 1, 8 => 2, _ => 0 };
+
+    Vector2I GetDirV(int dir) => dir switch
+        { 1 => Vector2I.Right, 2 => Vector2I.Down, 4 => Vector2I.Left, 8 => Vector2I.Up, _ => Vector2I.Zero };
+    
+    Vector2 GetDir(int dir) => GetDirV(dir);
+}
