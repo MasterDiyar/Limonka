@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://nyhrown616bw"]
+
+[ext_resource type="TileSet" uid="uid://dik7h7u2jgmr4" path="res://temple/tileste.tres" id="1_m3m0d"]
+
+[node name="TileMapLayer" type="TileMapLayer" unique_id=212266071]
+texture_filter = 3
+tile_set = ExtResource("1_m3m0d")

@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://sqp6uuhpfkjg"]
+
+[ext_resource type="Script" uid="uid://bj586w2vsxbts" path="res://temple/Temple.cs" id="1_b3wai"]
+[ext_resource type="PackedScene" uid="uid://dlfsqmwqj64ow" path="res://temple/dungeon/open_3.tscn" id="2_ii4lb"]
+[ext_resource type="PackedScene" uid="uid://d314auvdxggjb" path="res://temple/dungeon/open_4.tscn" id="3_ioub8"]
+[ext_resource type="PackedScene" uid="uid://deblj5hjhdmfj" path="res://temple/dungeon/open_2.tscn" id="4_m4ahx"]
+[ext_resource type="PackedScene" uid="uid://biat5te630k8" path="res://temple/dungeon/open_1.tscn" id="5_ntc88"]
+[ext_resource type="PackedScene" uid="uid://js3x6aw8od7h" path="res://temple/dungeon/two1.tscn" id="6_nexyv"]
+[ext_resource type="PackedScene" uid="uid://cwspqwlbd6kxb" path="res://temple/dungeon/two2.tscn" id="7_2q5bw"]
+[ext_resource type="PackedScene" uid="uid://dmol3rmj75aww" path="res://temple/dungeon/two3.tscn" id="8_5ai4s"]
+[ext_resource type="PackedScene" uid="uid://dmbah8rvwxu1i" path="res://temple/dungeon/two_4.tscn" id="9_7gbr8"]
+[ext_resource type="PackedScene" uid="uid://sgbnljijhs82" path="res://temple/dungeon/two_5.tscn" id="10_x736d"]
+[ext_resource type="PackedScene" uid="uid://cr3pboiqfytci" path="res://temple/dungeon/two_6.tscn" id="11_vd71c"]
+[ext_resource type="PackedScene" uid="uid://bu4qdpi0vra82" path="res://temple/dungeon/three1.tscn" id="12_p2tcu"]
+[ext_resource type="PackedScene" uid="uid://d4jis0agjyiqh" path="res://temple/dungeon/Three2.tscn" id="13_addr2"]
+[ext_resource type="PackedScene" uid="uid://ds72qil7rxfb2" path="res://temple/dungeon/Three3.tscn" id="14_o5jf3"]
+[ext_resource type="PackedScene" uid="uid://cj2dxbvw4v4xu" path="res://temple/dungeon/three_4.tscn" id="15_j60tc"]
+[ext_resource type="PackedScene" uid="uid://b0codatgs6mvy" path="res://temple/dungeon/Four.tscn" id="16_wmsh0"]
+[ext_resource type="PackedScene" uid="uid://bs4nijh7tbpgg" path="res://temple/dungeon/tunnel_1.tscn" id="17_m4ahx"]
+[ext_resource type="PackedScene" uid="uid://b5pc88tepuqoc" path="res://temple/dungeon/tunnel_2.tscn" id="18_ntc88"]
+
+[node name="templeMap" type="Node2D" unique_id=1309409883]
+script = ExtResource("1_b3wai")
+scene = Dictionary[int, PackedScene]({
+1: ExtResource("2_ii4lb"),
+2: ExtResource("3_ioub8"),
+3: ExtResource("9_7gbr8"),
+4: ExtResource("4_m4ahx"),
+5: ExtResource("10_x736d"),
+6: ExtResource("8_5ai4s"),
+7: ExtResource("12_p2tcu"),
+8: ExtResource("5_ntc88"),
+9: ExtResource("6_nexyv"),
+10: ExtResource("11_vd71c"),
+11: ExtResource("13_addr2"),
+12: ExtResource("7_2q5bw"),
+13: ExtResource("14_o5jf3"),
+14: ExtResource("15_j60tc"),
+15: ExtResource("16_wmsh0"),
+20: ExtResource("17_m4ahx"),
+21: ExtResource("18_ntc88")
+})
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1412669926]
