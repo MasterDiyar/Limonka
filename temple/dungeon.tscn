@@ -1,8 +1,50 @@
-[gd_scene format=3 uid="uid://cp5ooy5werdmc"]
+[gd_scene format=3 uid="uid://bl7cl22xioonl"]
 
 [ext_resource type="Script" uid="uid://bj6tec2b8jdug" path="res://temple/Dungeon.cs" id="1_whyr5"]
+[ext_resource type="PackedScene" uid="uid://dlfsqmwqj64ow" path="res://temple/dungeon/open_3.tscn" id="2_xg5qf"]
+[ext_resource type="PackedScene" uid="uid://d314auvdxggjb" path="res://temple/dungeon/open_4.tscn" id="3_tw1f0"]
+[ext_resource type="PackedScene" uid="uid://deblj5hjhdmfj" path="res://temple/dungeon/open_2.tscn" id="4_kq7mv"]
+[ext_resource type="PackedScene" uid="uid://biat5te630k8" path="res://temple/dungeon/open_1.tscn" id="5_1w0cu"]
+[ext_resource type="PackedScene" uid="uid://js3x6aw8od7h" path="res://temple/dungeon/two1.tscn" id="6_4pygc"]
+[ext_resource type="PackedScene" uid="uid://cwspqwlbd6kxb" path="res://temple/dungeon/two2.tscn" id="7_k7kby"]
+[ext_resource type="PackedScene" uid="uid://dmol3rmj75aww" path="res://temple/dungeon/two3.tscn" id="8_1pkor"]
+[ext_resource type="PackedScene" uid="uid://dmbah8rvwxu1i" path="res://temple/dungeon/two_4.tscn" id="9_kewsb"]
+[ext_resource type="PackedScene" uid="uid://sgbnljijhs82" path="res://temple/dungeon/two_5.tscn" id="10_qt4mm"]
+[ext_resource type="PackedScene" uid="uid://cr3pboiqfytci" path="res://temple/dungeon/two_6.tscn" id="11_apm1b"]
+[ext_resource type="PackedScene" uid="uid://bu4qdpi0vra82" path="res://temple/dungeon/three1.tscn" id="12_rdcys"]
+[ext_resource type="PackedScene" uid="uid://d4jis0agjyiqh" path="res://temple/dungeon/Three2.tscn" id="13_73hhp"]
+[ext_resource type="PackedScene" uid="uid://ds72qil7rxfb2" path="res://temple/dungeon/Three3.tscn" id="14_yt3e7"]
+[ext_resource type="PackedScene" uid="uid://cj2dxbvw4v4xu" path="res://temple/dungeon/three_4.tscn" id="15_vfbhb"]
+[ext_resource type="PackedScene" uid="uid://b0codatgs6mvy" path="res://temple/dungeon/Four.tscn" id="16_fy4ab"]
+[ext_resource type="PackedScene" uid="uid://bs4nijh7tbpgg" path="res://temple/dungeon/tunnel_1.tscn" id="17_xxsih"]
+[ext_resource type="PackedScene" uid="uid://b5pc88tepuqoc" path="res://temple/dungeon/tunnel_2.tscn" id="18_0h2rv"]
+[ext_resource type="PackedScene" uid="uid://f17dvg52bsij" path="res://temple/moving_unit.tscn" id="19_tw1f0"]
 
 [node name="dungeon" type="Node2D" unique_id=1203423205]
 script = ExtResource("1_whyr5")
+Count = 20
+scene = Dictionary[int, PackedScene]({
+1: ExtResource("2_xg5qf"),
+2: ExtResource("3_tw1f0"),
+3: ExtResource("9_kewsb"),
+4: ExtResource("4_kq7mv"),
+5: ExtResource("10_qt4mm"),
+6: ExtResource("8_1pkor"),
+7: ExtResource("12_rdcys"),
+8: ExtResource("5_1w0cu"),
+9: ExtResource("6_4pygc"),
+10: ExtResource("11_apm1b"),
+11: ExtResource("13_73hhp"),
+12: ExtResource("7_k7kby"),
+13: ExtResource("14_yt3e7"),
+14: ExtResource("15_vfbhb"),
+15: ExtResource("16_fy4ab"),
+20: ExtResource("17_xxsih"),
+21: ExtResource("18_0h2rv")
+})
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=561374727]
+[node name="movingUnit" parent="." unique_id=467063743 instance=ExtResource("19_tw1f0")]
+top_level = true
+
+[node name="Camera2D" type="Camera2D" parent="movingUnit" unique_id=561374727]
+zoom = Vector2(2, 2)

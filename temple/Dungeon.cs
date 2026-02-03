@@ -3,11 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Adrenalin.scene;
 
 public partial class Dungeon : Node2D
 {
     [Export] private int Count = 5;
-    private Camera2D cam;
+    [Export] private Godot.Collections.Dictionary<int, PackedScene> scene;
+    private Mob cam;
     private int[,] rooms = new int[32, 32];
     private RandomNumberGenerator rng = new RandomNumberGenerator();
     
@@ -15,7 +17,8 @@ public partial class Dungeon : Node2D
     
     public override void _Ready()
     {
-        cam = GetNode<Camera2D>("Camera2D");
+        cam = GetNode<Mob>("movingUnit");
+        cam.Position = vec(8192, 8192);
         DungeonInit();
         
     }
@@ -32,11 +35,11 @@ public partial class Dungeon : Node2D
     void DungeonInit()
     {
         Vector2I startPos = vec(16, 16);
-        int firstDir = (new int[] { 1, 2, 4, 8 })[rng.RandiRange(0, 3)];
+        int firstDir = GetOpposite((new int[] { 1, 2, 4, 8 })[rng.RandiRange(0, 3)]);
         
         rooms[startPos.X, startPos.Y] = firstDir;
         
-        CreateNumeredDungeon(startPos + GetDirV(firstDir), GetOpposite(firstDir), Count);
+        CreateNumeredDungeon(startPos + GetDirV(firstDir), firstDir, Count);
         
 
         StringBuilder sb = new StringBuilder("\n--- Dungeon Map ---\n");
@@ -45,10 +48,20 @@ public partial class Dungeon : Node2D
                 int val = rooms[i, j];
                 string cell = val == 0 ? " . " : val.ToString().PadLeft(2) + " ";
                 sb.Append(cell);
+                if (val ==0) continue;
+                CreateCurr(scene[val], vec(i * 544, j * 544));
+                
+                if ((val & 4) != 0) 
+                    CreateTunnel(1, vec(i * 544, j * 544) + Vector2.Right * 272);
+                
+                if ((val & 8) != 0) 
+                    CreateTunnel(2, vec(i * 544, j * 544) + Vector2.Down * 272);
+                
             }
             sb.AppendLine();
         }
         GD.Print(sb.ToString());
+        
         QueueRedraw();
     }
     
@@ -69,7 +82,7 @@ public partial class Dungeon : Node2D
         int currentMask = from;
         
         if (left <= 0) {
-            rooms[current.X, current.Y] = currentMask;
+            rooms[current.X, current.Y] = FlipMask(currentMask);
             return;
         }
 
@@ -83,7 +96,7 @@ public partial class Dungeon : Node2D
 
         if (available.Count == 0)
         {
-            rooms[current.X, current.Y] = currentMask;
+            rooms[current.X, current.Y] = FlipMask(currentMask);
             return;
         }
 
@@ -99,7 +112,7 @@ public partial class Dungeon : Node2D
             available.RemoveAt(idx);
         }
 
-        rooms[current.X, current.Y] = currentMask;
+        rooms[current.X, current.Y] = FlipMask(currentMask);
 
         int leftPerBranch = left - branchCount;
         foreach (int dir in chosenDirs)
@@ -109,8 +122,25 @@ public partial class Dungeon : Node2D
         }
     }
     
+    void CreateTunnel(int from, Vector2 pos)
+    {
+        var kletka = (from is 1 or 4 ? scene[20] : scene[21]).Instantiate<Node2D>();
+        kletka.Position = pos;
+        AddChild(kletka);
+    }
+    
+    Node2D CreateCurr(PackedScene scena, Vector2 position)
+    {
+        var kletka = scena.Instantiate<Node2D>();
+        kletka.Position = position;
+        AddChild(kletka);
+        return kletka;
+    }
+    
     int GetOpposite(int dir) => dir switch
         { 1 => 4, 2 => 8, 4 => 1, 8 => 2, _ => 0 };
+    
+    int FlipMask(int val) => ((val & 1) << 2) | ((val & 4) >> 2) | ((val & 2) << 2) | ((val & 8) >> 2);
 
     Vector2I GetDirV(int dir) => dir switch
         { 1 => Vector2I.Right, 2 => Vector2I.Down, 4 => Vector2I.Left, 8 => Vector2I.Up, _ => Vector2I.Zero };

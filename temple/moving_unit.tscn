@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://f17dvg52bsij"]
+
+[ext_resource type="Script" uid="uid://d4me4h8cf87my" path="res://temple/MovingUnit.cs" id="1_12bh7"]
+[ext_resource type="Texture2D" uid="uid://cb5ia2pm1wuw5" path="res://icon.svg" id="2_e3blk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3edq"]
+size = Vector2(16, 16)
+
+[node name="movingUnit" type="CharacterBody2D" unique_id=467063743]
+script = ExtResource("1_12bh7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1541146523]
+shape = SubResource("RectangleShape2D_r3edq")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1028849573]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("2_e3blk")
