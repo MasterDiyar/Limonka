@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://7cs6guxaica3"]
+
+[ext_resource type="Script" uid="uid://d2yitx88icih2" path="res://newage/Microb.cs" id="1_h4ooq"]
+
+[node name="microb" type="Node2D" unique_id=1837003551]
+script = ExtResource("1_h4ooq")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=938473693]
+polygon = PackedVector2Array(0, 0, 10, 0, 10, 10, 0, 10)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1981578239]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=2056059108]
+polygon = PackedVector2Array(0, 0, 10, 0, 10, 10, 0, 10)
