@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c8l1mislyxeps"]
+
+[ext_resource type="PackedScene" uid="uid://csqyvlhmagtj7" path="res://newage/molecules/molecule.tscn" id="1_ppkfl"]
+
+[node name="P2O5" unique_id=1861109849 instance=ExtResource("1_ppkfl")]
+Components = PackedStringArray("p", "o")
+Count = PackedInt32Array(2, 5)
+UpperName = "p2o5"

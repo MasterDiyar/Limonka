@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://brut8558y1vle"]
+
+[ext_resource type="Script" uid="uid://dnrpdfdnpokkm" path="res://zetzetzet/Eps.cs" id="1_fbvth"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nbpkv"]
+
+[node name="EPSES" type="CharacterBody2D" unique_id=999488467 node_paths=PackedStringArray("RayLeft", "RayRight", "RayForward")]
+collision_layer = 2
+script = ExtResource("1_fbvth")
+RayLeft = NodePath("castLeft")
+RayRight = NodePath("castRight")
+RayForward = NodePath("castForward")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=880021917]
+scale = Vector2(0.25, 0.25)
+shape = SubResource("CircleShape2D_nbpkv")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1216135853]
+scale = Vector2(0.25, 0.25)
+polygon = PackedVector2Array(-10, 0, -10, -2, -9, -5, -7, -7, -5, -9, -3, -10, 0, -10, 2, -10, 5, -9, 7, -7, 9, -5, 10, -3, 10, 0, 10, 2, 9, 5, 7, 7, 5, 9, 3, 10, 0, 10, -3, 10, -5, 9, -7, 7, -9, 5, -10, 3)
+
+[node name="castLeft" type="RayCast2D" parent="." unique_id=15968699]
+target_position = Vector2(0, -200)
+
+[node name="castRight" type="RayCast2D" parent="." unique_id=1270568806]
+target_position = Vector2(0, 200)
+
+[node name="castForward" type="RayCast2D" parent="." unique_id=442931268]
+target_position = Vector2(200, 0)

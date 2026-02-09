@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://d5qj8imogcfq"]
+
+[ext_resource type="PackedScene" uid="uid://csqyvlhmagtj7" path="res://newage/molecules/molecule.tscn" id="1_0dsnb"]
+
+[node name="H3COOH" unique_id=1861109849 instance=ExtResource("1_0dsnb")]
+Components = PackedStringArray("h", "c", "o")
+Count = PackedInt32Array(4, 1, 2)
+UpperName = "h3cooh"
+
+[node name="Polygon2D" parent="." index="0" unique_id=322947545]
+color = Color(0.14509805, 0.19607843, 0.29803923, 1)

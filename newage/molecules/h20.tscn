@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c3w3w5ncv7tvf"]
+
+[ext_resource type="PackedScene" uid="uid://csqyvlhmagtj7" path="res://newage/molecules/molecule.tscn" id="1_ig0sf"]
+
+[node name="h20" unique_id=1861109849 instance=ExtResource("1_ig0sf")]
+Components = PackedStringArray("h", "o")
+Count = PackedInt32Array(0, 1)
+UpperName = "h2o"
+
+[node name="Polygon2D" parent="." index="0" unique_id=322947545]
+color = Color(0.2627451, 1, 1, 0.52156866)

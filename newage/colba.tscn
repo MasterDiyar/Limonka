@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bfwhbm74fh6b5"]
+
+[ext_resource type="Script" uid="uid://c05jxhb7258dy" path="res://newage/Colb.cs" id="1_cl4tu"]
+[ext_resource type="PackedScene" uid="uid://d0l6lv67k753s" path="res://newage/molecules/co_2.tscn" id="2_ptwlt"]
+[ext_resource type="PackedScene" uid="uid://c3w3w5ncv7tvf" path="res://newage/molecules/h20.tscn" id="3_24alu"]
+[ext_resource type="PackedScene" uid="uid://duti1e6s8wupc" path="res://newage/molecules/n2.tscn" id="4_u0oig"]
+[ext_resource type="PackedScene" uid="uid://cb58a0bc80ggi" path="res://newage/molecules/o2.tscn" id="5_k7iil"]
+[ext_resource type="PackedScene" uid="uid://d5qj8imogcfq" path="res://newage/molecules/h3cooh.tscn" id="6_jse8y"]
+[ext_resource type="PackedScene" uid="uid://ddi0sebg7m215" path="res://newage/molecules/h3po3.tscn" id="7_bv5db"]
+[ext_resource type="PackedScene" uid="uid://c8l1mislyxeps" path="res://newage/molecules/p2o5.tscn" id="8_6teh0"]
+[ext_resource type="PackedScene" uid="uid://7cs6guxaica3" path="res://newage/microb.tscn" id="10_6teh0"]
+
+[node name="colba" type="Node2D" unique_id=1595182881]
+script = ExtResource("1_cl4tu")
+moleculeScenes = Array[PackedScene]([ExtResource("2_ptwlt"), ExtResource("6_jse8y"), ExtResource("7_bv5db"), ExtResource("3_24alu"), ExtResource("4_u0oig"), ExtResource("5_k7iil"), ExtResource("8_6teh0")])
+eachCount = 5
+
+[node name="Timer" type="Timer" parent="." unique_id=1091131783]
+
+[node name="microb" parent="." unique_id=1837003551 instance=ExtResource("10_6teh0")]
+position = Vector2(247, 190)
