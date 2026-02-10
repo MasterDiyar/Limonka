@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://dsfpy26w72h58"]
+
+[ext_resource type="Script" uid="uid://vbxvvpbjjnjg" path="res://carmani/InGridPlaceMap.cs" id="1_grvob"]
+[ext_resource type="PackedScene" uid="uid://b8l0mosfwit3m" path="res://carmani/btns/arbalet.tscn" id="2_axaqk"]
+[ext_resource type="PackedScene" uid="uid://b6a1s4nc5wdfe" path="res://carmani/btns/blacksmith.tscn" id="3_tl3ja"]
+[ext_resource type="PackedScene" uid="uid://b6mda85bsanvk" path="res://carmani/btns/bow.tscn" id="4_10473"]
+[ext_resource type="PackedScene" uid="uid://ccfsglk3htkn4" path="res://carmani/btns/cave.tscn" id="5_5cfs3"]
+[ext_resource type="PackedScene" uid="uid://ectwq3qg32ia" path="res://carmani/btns/farm.tscn" id="6_ikysb"]
+
+[node name="InGridPlaceMap" type="Node2D" unique_id=1248574397]
+script = ExtResource("1_grvob")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=390726025]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1825566136]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control" unique_id=1837215592]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -240.0
+offset_right = 96.0
+offset_bottom = 240.0
+grow_vertical = 2
+
+[node name="ChoosePanel" parent="CanvasLayer/Control/VBoxContainer" unique_id=940543488 instance=ExtResource("2_axaqk")]
+layout_mode = 2
+
+[node name="ChoosePanel2" parent="CanvasLayer/Control/VBoxContainer" unique_id=789568921 instance=ExtResource("3_tl3ja")]
+layout_mode = 2
+
+[node name="ChoosePanel3" parent="CanvasLayer/Control/VBoxContainer" unique_id=1562704367 instance=ExtResource("4_10473")]
+layout_mode = 2
+
+[node name="ChoosePanel4" parent="CanvasLayer/Control/VBoxContainer" unique_id=2016514470 instance=ExtResource("5_5cfs3")]
+layout_mode = 2
+
+[node name="ChoosePanel5" parent="CanvasLayer/Control/VBoxContainer" unique_id=1715873487 instance=ExtResource("6_ikysb")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=802284451]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 271.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Info" type="Panel" parent="CanvasLayer/Control/HBoxContainer" unique_id=418302931]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/HBoxContainer/Info" unique_id=1905531745]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "cost:"
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control/HBoxContainer" unique_id=1178523906]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.17
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/HBoxContainer/Panel" unique_id=216749919]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "^"
+horizontal_alignment = 1
